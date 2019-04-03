@@ -1,7 +1,9 @@
+import { MdxPreview } from "netlify-cms-widget-mdx"
+import React, { Component } from "react"
 import CMS, { init } from 'netlify-cms';
-import EditorYoutube from './components/EditorYoutube';
 import FileSystemBackend from './components/FileSystemBackend';
 
+const MdxControl = require("netlify-cms-widget-markdown").default.controlComponent; // import from netlify-cms-widget-mdx doesnt work v 0.3.2
 // console.log('CMS.config', config)
 // rewrite config to use file-system instead
 if (process.env.NODE_ENV === 'development') {
@@ -10,7 +12,46 @@ if (process.env.NODE_ENV === 'development') {
   CMS.registerBackend('file-system', FileSystemBackend);
 }
 
-CMS.registerEditorComponent(EditorYoutube);
+// The preview window which renders MDX content.
+// Docs: https://www.netlifycms.org/docs/customization/
+
+class MDXWidget extends Component {
+  render() {
+    return (
+      <div>
+        eqweqwe
+      </div>
+    )
+  }
+}
+console.log('xxxxx', MdxControl);
+const PreviewWindow = props => {
+  const iframe = document.getElementsByTagName("iframe")[0];
+  const iframeHeadElem = iframe.contentDocument.head;
+  
+  const mdxProps = {
+    // This key represents html elements used in markdown; h1, p, etc
+    //components: LayoutComponents,
+    // Pass components used in the editor (and shared throughout mdx) here:
+    scope: {
+      Demo: props => <h1>This is a demo component</h1>,
+    },
+    
+    mdPlugins: [],
+  }
+  
+  return (
+    <div>
+      <MdxPreview mdx={mdxProps} {...props} />
+    </div>
+  )
+}
+
+// Netlify collections that set `widget: mdx` will be able to use this custom
+// widget. NOTE: The StyleSheet manager can *only* be injected into the Preview.
+// Docs: https://www.netlifycms.org/docs/widgets/
+
+CMS.registerWidget("mdx", MdxControl, PreviewWindow);
 
 // do manual init (accepts a config object)
 // init({ config: {...} }) that would be merged with
