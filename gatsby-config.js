@@ -1,4 +1,6 @@
 const path = require('path')
+// add as a dev-proxy
+const fileSystemAPI = require('./src/cms/file-system-api-plugin/fs-express-api');
 
 module.exports = {
   siteMetadata: {
@@ -12,6 +14,7 @@ module.exports = {
       resolve: `gatsby-mdx`,
       options: {
         defaultLayouts: { default: path.resolve('./src/components/layout.js') },
+        extensions: [".mdx", ".md"],
       },
     },
     'gatsby-plugin-react-helmet',
@@ -43,8 +46,20 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: `gatsby-plugin-netlify-cms`,
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`, // default: undefined
+        stylesPath: `${__dirname}/src/cms/cms.css`, // default: undefined
+        enableIdentityWidget: false, // default: true
+        publicPath: 'admin',
+        htmlTitle: 'Content Manager',
+        manualInit: true,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
   ],
+  developMiddleware: fileSystemAPI,
 }
