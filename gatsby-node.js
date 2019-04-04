@@ -4,9 +4,8 @@ const { createFilePath } = require("gatsby-source-filesystem");
 
 // to recreate subfolder abilities
 const getValue = (node, getNode) => {
-  const splitPath = node.fileAbsolutePath.split(path.sep);
   const value = createFilePath({ node, getNode });
-  return `${splitPath[splitPath.length -2]}${value.replace('--', '/')}`;
+  return `${value.replace('--', '/')}`;
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
