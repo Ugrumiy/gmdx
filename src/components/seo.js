@@ -8,15 +8,18 @@ function SEO({ description, lang, meta, keywords, title }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
+        console.log('xxxx', data);
         const metaDescription =
-          description || data.site.siteMetadata.description
+          description || data.globalSiteSettingsYaml.siteMetadata.siteDescription;
+        const metaTitle =
+          title || data.globalSiteSettingsYaml.siteMetadata.sitetitle;
         return (
           <Helmet
             htmlAttributes={{
               lang,
             }}
-            title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
+            title={metaTitle}
+            titleTemplate={`%s | ${metaTitle}`}
             meta={[
               {
                 name: 'description',
@@ -24,7 +27,7 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 property: 'og:title',
-                content: title,
+                content: metaTitle,
               },
               {
                 property: 'og:description',
@@ -40,11 +43,11 @@ function SEO({ description, lang, meta, keywords, title }) {
               },
               {
                 name: 'twitter:creator',
-                content: data.site.siteMetadata.author,
+                content: data.globalSiteSettingsYaml.siteMetadata.author,
               },
               {
                 name: 'twitter:title',
-                content: title,
+                content: metaTitle,
               },
               {
                 name: 'twitter:description',
@@ -84,13 +87,15 @@ SEO.propTypes = {
 export default SEO
 
 const detailsQuery = graphql`
-  query DefaultSEOQuery {
-    site {
-      siteMetadata {
-        title
-        description
-        author
-      }
+  query {
+    globalSiteSettingsYaml{
+        siteMetadata{
+        siteUrl
+        siteTitle
+        siteTitleShort
+        siteDescription
+        themeColor
+        }
     }
   }
 `

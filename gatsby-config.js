@@ -3,12 +3,6 @@ const path = require('path')
 const fileSystemAPI = require('./src/cms/file-system-api-plugin/fs-express-api');
 
 module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Starter MDX Basic',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@chrisbiscardi',
-  },
   plugins: [
     {
       resolve: 'gatsby-plugin-alias-imports',
