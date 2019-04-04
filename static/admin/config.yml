@@ -73,6 +73,6 @@ collections:
     format: frontmatter
     widget: mdx
     fields:
-      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "model" }
-      - { label: Title, name: title, widget: string, required: true }
+      - { label: "PageTemplate", name: "huggerTemplate", widget: "hidden", default: "default" }
+      - { label: Filename, name: title, widget: string, required: true, hint: -- separator }
       - { label: Body, name: body, widget: mdx }
