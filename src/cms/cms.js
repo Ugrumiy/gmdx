@@ -52,35 +52,6 @@ const PreviewWindow = props => {
 // Docs: https://www.netlifycms.org/docs/widgets/
 
 CMS.registerWidget("mdx", MdxControl, PreviewWindow);
-CMS.registerEditorComponent({
-  // Internal id of the component
-  id: "youtube",
-  // Visible label
-  label: "Youtube",
-  // Fields the user need to fill out when adding an instance of the component
-  fields: [{name: 'children', label: 'Youtube Video ID', widget: 'string'}],
-  // Pattern to identify a block as being an instance of this component
-  pattern: /^youtube (\S+)$/,
-  // Function to extract data elements from the regexp match
-  fromBlock: function(match) {
-    console.log('axxxxx', match);
-    return {
-      children: match[1]
-    };
-  },
-  // Function to create a text block from an instance of this component
-  toBlock: function(obj) {
-    console.log('xxxx2', obj);
-    return '<Demo>{obj.children}</Demo>';
-  },
-  // Preview output for this component. Can either be a string or a React component
-  // (component gives better render performance)
-  toPreview: function(obj) {
-    return (
-      null
-    );
-  }
-});
 // do manual init (accepts a config object)
 // init({ config: {...} }) that would be merged with
 // the config.yml settings, but this doesn't currently work

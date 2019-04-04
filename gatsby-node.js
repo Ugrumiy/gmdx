@@ -14,7 +14,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       // Individual MDX node
       node,
       // Generated value based on filepath with "blog" prefix
-      value: `/blog${value}`
+      value: `/${node.frontmatter.templateKey}${value}`
     });
   }
 };
@@ -32,6 +32,9 @@ exports.createPages = ({ graphql, actions }) => {
                   id
                   fields {
                     slug
+                  }
+                  frontmatter{
+                    templateKey
                   }
                 }
               }
@@ -51,7 +54,7 @@ exports.createPages = ({ graphql, actions }) => {
             // (or `node.frontmatter.slug`)
             path: node.fields.slug,
             // This component will wrap our MDX content
-            component: path.resolve(`./src/huggers/modelPage.js`),
+            component: path.resolve(`./src/huggers/${String(node.frontmatter.templateKey)}Hugger.js`),
             // We can use the values in this context in
             // our page layout component
             context: { id: node.id }

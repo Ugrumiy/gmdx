@@ -63,15 +63,16 @@ collections:
             }
             ]
           }
-  - name: articles
-    label: Articles
-    description: 'Articles'
-    folder: src/pages/
+  - name: models
+    label: Models
+    description: 'Model Pages'
+    folder: src/_content/model
     slug: '{{slug}}'
     create: true
     extension: mdx
     format: frontmatter
     widget: mdx
     fields:
+      - { label: "Template Key", name: "templateKey", widget: "hidden", default: "model" }
       - { label: Title, name: title, widget: string, required: true }
       - { label: Body, name: body, widget: mdx }
