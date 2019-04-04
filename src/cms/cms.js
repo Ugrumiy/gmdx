@@ -4,7 +4,7 @@ import CMS, { init } from 'netlify-cms';
 import FileSystemBackend from './components/FileSystemBackend';
 
 const MdxControl = require("netlify-cms-widget-markdown").default.controlComponent; // import from netlify-cms-widget-mdx doesnt work v 0.3.2
-// console.log('CMS.config', config)
+
 // rewrite config to use file-system instead
 if (process.env.NODE_ENV === 'development') {
   // override certain ascpects of the config:
@@ -24,7 +24,6 @@ class MDXWidget extends Component {
     )
   }
 }
-console.log('xxxxx', MdxControl);
 const PreviewWindow = props => {
   const iframe = document.getElementsByTagName("iframe")[0];
   const iframeHeadElem = iframe.contentDocument.head;
