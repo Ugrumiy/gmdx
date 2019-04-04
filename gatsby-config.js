@@ -11,6 +11,7 @@ module.exports = {
           '@src': './src',
           '@components': './src/components',
           '@pages': './src/pages',
+          '@store': './src/store',
         },
         extensions: [
           'js',
@@ -31,7 +32,6 @@ module.exports = {
         //
         globalScope: `
           import Components from "../../../src/components";
-          console.log('zzzz', Components);
           export default Components;
         `
       },

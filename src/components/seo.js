@@ -8,7 +8,6 @@ function SEO({ description, lang, meta, keywords, title }) {
     <StaticQuery
       query={detailsQuery}
       render={data => {
-        console.log('xxxx', data);
         const metaDescription =
           description || data.globalSiteSettingsYaml.siteMetadata.siteDescription;
         const metaTitle =
