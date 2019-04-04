@@ -1,0 +1,11 @@
+mainNavConfig:
+  - href: /model/kodiaq
+    title: Kodiaq
+  - href: /model/octavia
+    title: Octavia
+siteMetadata:
+  siteDescription: An opinionated starter for Best Skoda Site
+  siteTitle: Best Skoda Site
+  siteTitleShort: Skoda Site
+  siteUrl: 'https://gu.fabianschultz.com'
+  themeColor: '#000'
