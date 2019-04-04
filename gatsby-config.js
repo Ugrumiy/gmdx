@@ -11,6 +11,19 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@src': './src',
+          '@components': './src/components',
+          '@pages': './src/pages',
+        },
+        extensions: [
+          'js',
+        ],
+      },
+    },
+    {
       resolve: `gatsby-mdx`,
       options: {
         defaultLayouts: { default: path.resolve('./src/components/layout.js') },
@@ -23,8 +36,9 @@ module.exports = {
         // also be passed into `cms.js`, under the `scope` key.
         //
         globalScope: `
-          import Components from "./src/components";
-          export default { ...Components };
+          import Components from "../../../src/components";
+          console.log('zzzz', Components);
+          export default Components;
         `
       },
     },
