@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-mdx-basic",
-  "description": "Gatsby starter MDX basic",
-  "version": "1.0.0",
-  "author": "Chris Biscardi <chris@christopherbiscardi.com>",
+  "name": "kdx-gatsby-starter-mdx",
+  "description": "Gatsby starter MDX",
+  "version": "0.5.0",
+  "author": "KDX",
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled-base": "^10.0.10",
@@ -32,7 +32,8 @@
     "redux": "^4.0.1"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "KDX"
   ],
   "license": "MIT",
   "scripts": {
@@ -49,9 +50,5 @@
     "gatsby-plugin-eslint": "^2.0.4",
     "prettier": "^1.16.4",
     "rimraf": "^2.6.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/christopherbiscardi/gatsby-starter-mdx-basic"
   }
 }
