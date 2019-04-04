@@ -1,20 +1,31 @@
 
 const path = require("path");
 const { createFilePath } = require("gatsby-source-filesystem");
+
+// to recreate subfolder abilities
+const getValue = (node, getNode) => {
+  const splitPath = node.fileAbsolutePath.split(path.sep);
+  const value = createFilePath({ node, getNode });
+  return `${splitPath[splitPath.length -2]}${value.replace('--', '/')}`;
+};
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // We only want to operate on `Mdx` nodes. If we had content from a
   // remote CMS we could also check to see if the parent node was a
   // `File` node here
   if (node.internal.type === "Mdx") {
-    const value = createFilePath({ node, getNode });
+    const finalPath = node.frontmatter.location != null && node.frontmatter.location !== '' ?
+      `/${node.frontmatter.location}` :
+      getValue(node, getNode);
+      // const path = slugFromTitle(node.frontmatter.title);
     createNodeField({
       // Name of the field you are adding
       name: "slug",
       // Individual MDX node
       node,
       // Generated value based on filepath with "blog" prefix
-      value: `/${node.frontmatter.templateKey}${value}`
+      value: finalPath
     });
   }
 };
