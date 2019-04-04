@@ -15,6 +15,17 @@ module.exports = {
       options: {
         defaultLayouts: { default: path.resolve('./src/components/layout.js') },
         extensions: [".mdx", ".md"],
+        // Imports here are available globally to .mdx files, with the exception
+        // of automatically created pages located in /pages. This is a bug in
+        // gatsby-mdx. See https://github.com/ChristopherBiscardi/gatsby-mdx/issues/243
+        //
+        // Also note: For mdx to work in NetlifyCMS, global scope passed in here
+        // also be passed into `cms.js`, under the `scope` key.
+        //
+        globalScope: `
+          import Components from "./src/components";
+          export default { ...Components };
+        `
       },
     },
     'gatsby-plugin-react-helmet',

@@ -2,6 +2,7 @@ import { MdxPreview } from "netlify-cms-widget-mdx"
 import React, { Component } from "react"
 import CMS, { init } from 'netlify-cms';
 import FileSystemBackend from './components/FileSystemBackend';
+import Components from '../components';
 
 const MdxControl = require("netlify-cms-widget-markdown").default.controlComponent; // import from netlify-cms-widget-mdx doesnt work v 0.3.2
 
@@ -33,7 +34,7 @@ const PreviewWindow = props => {
     //components: LayoutComponents,
     // Pass components used in the editor (and shared throughout mdx) here:
     scope: {
-      Demo: props => <h1>This is a demo component</h1>,
+      ...Components,
     },
     
     mdPlugins: [],

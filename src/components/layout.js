@@ -6,7 +6,6 @@ import Header from './header'
 import './layout.css'
 
 
-export const Demo = props => <h1>This is a demo component</h1>;
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
