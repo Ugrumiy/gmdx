@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 // add as a dev-proxy
 const fileSystemAPI = require('./src/cms/file-system-api-plugin/fs-express-api');
 

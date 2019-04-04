@@ -36,8 +36,9 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "clean": "rimraf .cache public",
+    "build": "npm run clean && gatsby build",
+    "develop": "npm run clean && gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -46,7 +47,8 @@
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "gatsby-plugin-eslint": "^2.0.4",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "rimraf": "^2.6.2"
   },
   "repository": {
     "type": "git",
