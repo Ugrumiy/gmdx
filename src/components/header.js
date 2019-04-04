@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+import Navbar from '@components/Navbar';
 import React from 'react'
 
 const Header = ({ siteTitle }) => (
@@ -9,6 +10,7 @@ const Header = ({ siteTitle }) => (
       marginBottom: '1.45rem',
     }}
   >
+    <Navbar />
     <div
       style={{
         margin: '0 auto',

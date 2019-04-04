@@ -57,7 +57,15 @@ module.exports = {
         path: `${__dirname}/src/pages`
       }
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/_data`,
+        name: 'data',
+      },
+    },
     'gatsby-transformer-sharp',
+    'gatsby-transformer-yaml',
     'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-manifest`,

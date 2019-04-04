@@ -23,6 +23,46 @@ slug:
   clean_accents: true
 
 collections:
+  - name: 'Settings'
+    label: 'Settings'
+    delete: false # Prevent users from deleting documents in this collection
+    editor:
+      preview: false
+    files:
+      - name: 'general'
+        label: 'Site Settings'
+        file: 'src/_data/globalSiteSettings/globalSiteSettings.yaml'
+        description: 'General Site Settings'
+        fields:
+          - {label: Main Navigation Config, name: mainNavConfig, widget: list, fields: [{ label: 'Menu Item Title', name: 'title', widget: 'string' },{ label: 'Menu Item Href', name: 'href', widget: 'string' }]}
+          - {
+            label: Metadata,
+            name: siteMetadata,
+            widget: object,
+            fields: [
+            {
+              label: Title,
+              name: siteTitle,
+              widget: string
+            }, {
+              label: Title Short,
+              name: siteTitleShort,
+              widget: text
+            }, {
+              label: Site Description,
+              name: siteDescription,
+              widget: text
+            }, {
+              label: Site Url,
+              name: siteUrl,
+              widget: text
+            }, {
+              label: Theme Color,
+              name: themeColor,
+              widget: text
+            }
+            ]
+          }
   - name: articles
     label: Articles
     description: 'Articles'

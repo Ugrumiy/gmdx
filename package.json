@@ -19,6 +19,7 @@
     "gatsby-plugin-sharp": "^2.0.30",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.17",
+    "gatsby-transformer-yaml": "^2.1.11",
     "js-base64": "^2.5.1",
     "multer": "^1.4.1",
     "netlify-cms": "^2.9.0",
