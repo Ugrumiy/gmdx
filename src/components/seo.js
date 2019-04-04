@@ -1,17 +1,22 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title }) {
+const SEO = (props) => {
+  const {
+    description,
+    lang,
+    meta,
+    keywords,
+    title,
+  } = props;
   return (
     <StaticQuery
-      query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.globalSiteSettingsYaml.siteMetadata.siteDescription;
-        const metaTitle =
-          title || data.globalSiteSettingsYaml.siteMetadata.sitetitle;
+      query={detailsQuery} //eslint-disable-line
+      render={(data) => {
+        const metaDescription = description || data.globalSiteSettingsYaml.siteMetadata.siteDescription;
+        const metaTitle = title || data.globalSiteSettingsYaml.siteMetadata.sitetitle;
         return (
           <Helmet
             htmlAttributes={{
@@ -56,24 +61,24 @@ function SEO({ description, lang, meta, keywords, title }) {
               .concat(
                 keywords.length > 0
                   ? {
-                      name: 'keywords',
-                      content: keywords.join(', '),
-                    }
-                  : []
+                    name: 'keywords',
+                    content: keywords.join(', '),
+                  }
+                  : [],
               )
               .concat(meta)}
           />
-        )
+        );
       }}
     />
-  )
-}
+  );
+};
 
 SEO.defaultProps = {
   lang: 'en',
   meta: [],
   keywords: [],
-}
+};
 
 SEO.propTypes = {
   description: PropTypes.string,
@@ -81,9 +86,9 @@ SEO.propTypes = {
   meta: PropTypes.array,
   keywords: PropTypes.arrayOf(PropTypes.string),
   title: PropTypes.string.isRequired,
-}
+};
 
-export default SEO
+export default SEO;
 
 const detailsQuery = graphql`
   query {
@@ -97,4 +102,4 @@ const detailsQuery = graphql`
         }
     }
   }
-`
+`;

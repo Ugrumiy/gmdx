@@ -4,6 +4,7 @@ const fileSystemAPI = require('./src/cms/file-system-api-plugin/fs-express-api')
 
 module.exports = {
   plugins: [
+    'gatsby-plugin-eslint',
     {
       resolve: 'gatsby-plugin-alias-imports',
       options: {

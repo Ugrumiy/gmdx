@@ -1,10 +1,9 @@
-// src/components/posts-page-layout.js
-import React from "react";
-import { graphql } from "gatsby";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
-import Layout from '../components/layout'
+import React from 'react';
+import { graphql } from 'gatsby';
+import MDXRenderer from 'gatsby-mdx/mdx-renderer';
+import Layout from '@components/layout';
 
-function PageTemplate({ data: { mdx } }) {
+function PageTemplate({ data: { mdx } }) { // eslint-disable-line
   return (
     <Layout>
       <h1>MODEL</h1>
@@ -26,4 +25,4 @@ export const pageQuery = graphql`
     }
   }
 `;
-export default PageTemplate
+export default PageTemplate;
