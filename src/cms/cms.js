@@ -2,7 +2,7 @@ import { MdxPreview } from "netlify-cms-widget-mdx"
 import React, { Component } from "react"
 import CMS, { init } from 'netlify-cms';
 import { StyleSheetManager } from "styled-components"
-import Components from '../components';
+import Components, { mdxpComponents } from '../components';
 import ThemeWrapper from '../styling/ThemeWrapper';
 import FileSystemBackend from './components/FileSystemBackend';
 
@@ -33,7 +33,8 @@ const PreviewWindow = props => {
   
   const mdxProps = {
     // This key represents html elements used in markdown; h1, p, etc
-    //components: LayoutComponents,
+    // components: mdxpComponents,
+    
     // Pass components used in the editor (and shared throughout mdx) here:
     scope: {
       ...Components,

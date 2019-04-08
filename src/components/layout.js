@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { MDXProvider } from '@mdx-js/tag';
 import ThemeWrapper from '@styling/ThemeWrapper';
 import Header from './header';
 import './layout.css';
-
+import Components from './index.js';
 
 const Layout = ({ children }) => (
   <ThemeWrapper>
@@ -16,13 +17,16 @@ const Layout = ({ children }) => (
         paddingTop: 0,
       }}
     >
-      {children}
+      <MDXProvider components={Components}>{children}</MDXProvider>
     </div>
   </ThemeWrapper>
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]).isRequired,
 };
 
 export default Layout;
