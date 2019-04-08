@@ -10,7 +10,7 @@ development_overrides:
 backend:
   name: github
   squash_merges: true
-  repo: bjrn/gatsby-with-netlify-cms
+  repo: Ugrumiy/gatsby-starter2
   branch: master
 
 display_url: https://gatsby-with-netlify-cms.netlify.com/
