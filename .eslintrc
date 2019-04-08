@@ -6,6 +6,7 @@
     "max-len": 0,
     "prefer-destructuring": 1,
     "no-underscore-dangle": 0,
+    "padded-blocks": 0,
     "jsx-a11y/label-has-for": 0,
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/no-static-element-interactions": 0,
