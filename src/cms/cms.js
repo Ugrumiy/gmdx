@@ -1,8 +1,10 @@
 import { MdxPreview } from "netlify-cms-widget-mdx"
 import React, { Component } from "react"
 import CMS, { init } from 'netlify-cms';
-import FileSystemBackend from './components/FileSystemBackend';
+import { StyleSheetManager } from "styled-components"
 import Components from '../components';
+import ThemeWrapper from '../styling/ThemeWrapper';
+import FileSystemBackend from './components/FileSystemBackend';
 
 const MdxControl = require("netlify-cms-widget-markdown").default.controlComponent; // import from netlify-cms-widget-mdx doesnt work v 0.3.2
 
@@ -19,9 +21,9 @@ if (process.env.NODE_ENV === 'development') {
 class MDXWidget extends Component {
   render() {
     return (
-      <div>
-        eqweqwe
-      </div>
+      <ThemeWrapper>
+        <MdxControl {...this.props} />
+      </ThemeWrapper>
     )
   }
 }
@@ -41,17 +43,19 @@ const PreviewWindow = props => {
   }
   
   return (
-    <div>
-      <MdxPreview mdx={mdxProps} {...props} />
-    </div>
-  )
+    <StyleSheetManager target={iframeHeadElem}>
+      <ThemeWrapper>
+        <MdxPreview mdx={mdxProps} {...props} />
+      </ThemeWrapper>
+    </StyleSheetManager>
+  );
 }
 
 // Netlify collections that set `widget: mdx` will be able to use this custom
 // widget. NOTE: The StyleSheet manager can *only* be injected into the Preview.
 // Docs: https://www.netlifycms.org/docs/widgets/
 
-CMS.registerWidget("mdx", MdxControl, PreviewWindow);
+CMS.registerWidget("mdx", MDXWidget, PreviewWindow);
 // do manual init (accepts a config object)
 // init({ config: {...} }) that would be merged with
 // the config.yml settings, but this doesn't currently work

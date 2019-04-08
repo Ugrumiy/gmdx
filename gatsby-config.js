@@ -10,6 +10,7 @@ module.exports = {
       options: {
         alias: {
           '@src': './src',
+          '@styling': './src/styling',
           '@components': './src/components',
           '@pages': './src/pages',
           '@store': './src/store',
@@ -69,6 +70,7 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-transformer-yaml',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -97,4 +99,4 @@ module.exports = {
     // 'gatsby-plugin-offline',
   ],
   developMiddleware: fileSystemAPI,
-}
+};

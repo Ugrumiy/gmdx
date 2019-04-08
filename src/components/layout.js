@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ThemeWrapper from '@styling/ThemeWrapper';
 import Header from './header';
 import './layout.css';
 
 
 const Layout = ({ children }) => (
-  <>
+  <ThemeWrapper>
     <Header />
     <div
       style={{
@@ -17,7 +18,7 @@ const Layout = ({ children }) => (
     >
       {children}
     </div>
-  </>
+  </ThemeWrapper>
 );
 
 Layout.propTypes = {
